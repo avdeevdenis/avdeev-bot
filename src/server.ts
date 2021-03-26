@@ -6,13 +6,14 @@ import AvdeevBot from './helpers/get_bot';
 import sendResponse from './helpers/send_response';
 import { requestLogger, errorLogger } from './helpers/loggers/index';
 import processingMessage from './helpers/processing_message';
-import consoleLog from './helpers/console_log';
 import { DDoSProtectLogger, userRequestsInfo } from './helpers/ddos_protect_logger';
 
 import {
   controllerDDoSBlocked,
 
   controllerRandomCat,
+  controllerRandomJoke,
+
   controllerDefault,
 
   controllerScreenMoexDay,
@@ -21,6 +22,7 @@ import {
   controllerScreenSpxSectorsDay,
 
   controllerUpdateStockScreens,
+  controllerHolidaysToday,
 } from './controllers/all';
 
 /**
@@ -39,8 +41,14 @@ const onGetMessage = async function (message) {
   }
 
   switch (lowerText) {
-    case '/random_cat':
+    case '/what_holidays_is_today':
+      return controllerHolidaysToday(message, AvdeevBot);
+
+    case '/get_random_cat':
       return controllerRandomCat(message, AvdeevBot);
+
+    case '/get_random_joke':
+      return controllerRandomJoke(message, AvdeevBot);
 
     case '/moex_day':
       return controllerScreenMoexDay(message, AvdeevBot);

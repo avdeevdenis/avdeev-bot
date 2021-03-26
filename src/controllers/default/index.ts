@@ -9,7 +9,9 @@ const getAllCommands = () => ({
     '/spx_sectors_day': 'S&P 500 Index day by sectors overview',
     '/moex_day': 'MOEX Index day overview.',
     '/update_stock_screens': 'To update screenshots of market indexes.',
-    '/random_cat': 'To get a random cat gif.'
+    '/get_random_cat': 'To get a random cat gif.',
+    '/get_random_joke': 'To get a random joke image.',
+    '/what_holidays_is_today': 'What holiday is today?'
 });
 
 const NEW_LINE_SYMBOLS = '\n\n';
