@@ -6,14 +6,14 @@
 const asyncSequenceRunner = async function (asyncFunctionArray) {
   const results = [];
 
-  const successAnswer = result => ({
-    success: true,
-    result,
+  const successAnswer = response => ({
+    resolveSuccess: true,
+    response,
   });
 
-  const errorAnswer = result => ({
-    success: false,
-    result,
+  const errorAnswer = response => ({
+    resolveSuccess: false,
+    response,
   });
 
   await asyncFunctionArray.reduce((result, asyncFunction) => {

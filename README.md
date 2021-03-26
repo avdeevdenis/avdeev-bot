@@ -6,10 +6,10 @@
 
 
 #### Локальный запуск бота.
-`node src/server.js`
+`npm run dev`
 
 #### Компиляция JS -> TS
-`npm run watch`
+`npm run tsc-watch`
 
 #### Запуск бота оффлайн:
 `forever start src/server.js`

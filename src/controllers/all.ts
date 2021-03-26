@@ -12,7 +12,7 @@ import controllerScreenMoexDay from './screen_moex_day';
 import controllerScreenSpxDay from './screen_spx_day';
 import controllerScreenSpxSectorsDay from './screen_spx_sectors_day';
 
-import controllerUpdateStockScreens from './update-stock-screens';
+import controllerUpdateStockScreens from './update_stock_screens';
 
 export {
   controllerDDoSBlocked,

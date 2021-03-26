@@ -8,7 +8,7 @@ import sendResponse from '../../helpers/send_response';
 const controllerUpdateStockScreens = async (message, AvdeevBot) => {
   const { chatId, username } = processingMessage(message);
 
-  const { isUpdatedSuccessfully, isLoading } = await updateStockScreens();
+  const { isUpdatedSuccessfully, isLoading } = await updateStockScreens(message, AvdeevBot);
 
   if (isLoading) {
     sendResponse({

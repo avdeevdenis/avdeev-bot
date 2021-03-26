@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 import { errorUpdateStockScreenLogger } from '../../helpers/loggers/index';
-import asyncSequenceRunner from '../../helpers/async-sequence-runner';
+import asyncSequenceRunner from '../../helpers/async_sequence_runner';
 import consoleLog from '../../helpers/console_log';
 import {
   MOEX_DAY_SCREEN_PATH,
@@ -9,6 +9,8 @@ import {
   SPX_DAY_SCREEN_PATH,
   SPX_SECTORS_DAY_SCREEN_PATH,
 } from '../../helpers/screen_helpers';
+import sendResponse from '../../helpers/send_response';
+import processingMessage from '../../helpers/processing_message';
 
 /**
  * Состояние обновления скриншотов
@@ -24,10 +26,19 @@ const updateState = {
  * @returns {options.isUpdatedSuccessfully} - информация обновлена успешно
  * @returns {options.isLoading} - информация обновляется на данный момент
  */
-const updateStockScreens = async function () {
+const updateStockScreens = async function (message, AvdeevBot) {
   if (updateState.isLoading) {
     return updateState;
   }
+
+  const { chatId, username } = processingMessage(message);
+
+  sendResponse({
+    username,
+    AvdeevBot,
+    chatId,
+    data: 'Starting to update the information.',
+  });
 
   updateState.isUpdatedSuccessfully = false;
   updateState.isLoading = true;
@@ -120,9 +131,9 @@ async function doScreenshotSites() {
 
   /**
    * Если все результаты закончились успешно - считаем обновление успешным
-   * item.success - успешно завершился запрос, item.result - успешно выполнилось заданное условие
+   * item.resolveSuccess - успешно завершился запрос, item.response - успешно выполнилось заданное условие
    */
-  const isUpdatedSuccessfully = result.every(item => item.success && item.result);
+  const isUpdatedSuccessfully = result.every(item => item.resolveSuccess && item.response);
 
   updateState.isUpdatedSuccessfully = isUpdatedSuccessfully;
   updateState.isLoading = false;
