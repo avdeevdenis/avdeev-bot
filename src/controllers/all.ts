@@ -3,6 +3,8 @@
  */
 import controllerDefault from './default';
 
+import controllerDDoSBlocked from './ddos_blocked';
+
 import controllerRandomCat from './random_cat';
 
 import controllerScreenMoexDay from './screen_moex_day';
@@ -13,6 +15,8 @@ import controllerScreenSpxSectorsDay from './screen_spx_sectors_day';
 import controllerUpdateStockScreens from './update-stock-screens';
 
 export {
+  controllerDDoSBlocked,
+
   controllerDefault,
 
   controllerRandomCat,

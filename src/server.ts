@@ -7,8 +7,11 @@ import sendResponse from './helpers/send_response';
 import { requestLogger, errorLogger } from './helpers/loggers/index';
 import processingMessage from './helpers/processing_message';
 import consoleLog from './helpers/console_log';
+import { DDoSProtectLogger, userRequestsInfo } from './helpers/ddos_protect_logger';
 
 import {
+  controllerDDoSBlocked,
+
   controllerRandomCat,
   controllerDefault,
 
@@ -24,7 +27,16 @@ import {
  * Обрабатываем поступающие сообщения от пользователей
  */
 const onGetMessage = async function (message) {
-  const { lowerText } = processingMessage(message);
+  const { lowerText, fromId } = processingMessage(message);
+
+  const isBlockedByDDoS = (
+    userRequestsInfo[fromId] &&
+    userRequestsInfo[fromId].isBlockedByDDoS
+  );
+
+  if (isBlockedByDDoS) {
+    return controllerDDoSBlocked(message, AvdeevBot);
+  }
 
   switch (lowerText) {
     case '/random_cat':
@@ -74,6 +86,7 @@ const tryCatcher = async function(onMessage, message) {
 const subscribe = () => {
   AvdeevBot.on('message', message => {
     requestLogger(message);
+    DDoSProtectLogger(message);
 
     tryCatcher(onGetMessage, message);
   });
