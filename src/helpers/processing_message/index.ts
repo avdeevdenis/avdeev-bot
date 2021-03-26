@@ -1,9 +1,10 @@
 /**
  * Маппинг входящего сообщения боту на JS-сущности
  */
- const processingMessage = message => {
-  const lowerText = message.text.toLocaleLowerCase();
-  const text = message.text;
+const processingMessage = message => {
+  const text = message.text || '';
+
+  const lowerText = text.toLocaleLowerCase();
   const chatId = message.chat.id;
   const username = message.from.username;
   const date = message.date;
