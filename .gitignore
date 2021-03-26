@@ -1,0 +1,5 @@
+/node_modules/
+/src/logs/
+/src/screens/
+.env
+/src/**/*.js

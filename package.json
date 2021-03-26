@@ -1,0 +1,23 @@
+{
+  "name": "avdeev-bot",
+  "version": "1.0.0",
+  "description": "github.com/avdeevdenis/avdeev-parser-bot",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "AVDEEV_BOT_ENABLE_LOGGER=1 nodemon src/server.js",
+    "watch": "tsc --watch",
+    "start": "forever start src/server.js",
+    "restart": "forever restart src/server.js",
+    "stop": "forever stop src/server.js"
+  },
+  "author": "Avdeev Denis inbox@avdeevdenis.ru",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "fs": "^0.0.1-security",
+    "node-telegram-bot-api": "^0.51.0",
+    "path": "^0.12.7",
+    "puppeteer": "^8.0.0"
+  }
+}
