@@ -1,4 +1,5 @@
 import consoleLog from '../console_log';
+import { errorLogger } from '../loggers';
 
 import { ISendResponseOptions } from './typings';
 
@@ -33,7 +34,7 @@ const sendResponse = (responseOptions: ISendResponseOptions) => {
       return AvdeevBot.sendAnimation(chatId, data);
 
     default:
-      consoleLog('Unknown response type `' + type + '`');
+      errorLogger(new Error('Unknown response type `' + type + '`'));
   }
 };
 

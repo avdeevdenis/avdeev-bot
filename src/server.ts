@@ -91,13 +91,8 @@ const subscribe = () => {
     tryCatcher(onGetMessage, message);
   });
 
-  AvdeevBot.on('polling_error', error => {
-    consoleLog('Polling_error', error);
-  });
-
-  AvdeevBot.on('webhook_error', error => {
-    consoleLog('Webhook_error', error);
-  });
+  AvdeevBot.on('polling_error', errorLogger);
+  AvdeevBot.on('webhook_error', errorLogger);
 };
 
 subscribe();
