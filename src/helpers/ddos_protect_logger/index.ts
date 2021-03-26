@@ -53,6 +53,11 @@ const DDoSProtectLogger = message => {
 
       timeoutedUnblock(userId);
     }
+
+    // Чтобы не накапливать старые timestamp'ы - постепенно очищаем их
+    if (timestamps.length > MAX_REQUESTS_LIMIT) {
+      userRequestsInfo[userId].timestamps.shift();
+    }
   }
 }
 
