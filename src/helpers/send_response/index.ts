@@ -24,8 +24,8 @@ const sendResponse = (responseOptions: ISendResponseOptions) => {
   consoleLog('Send response to `' + username + '` with type `' + type + '`');
 
   switch (type) {
-    case 'message': 
-      return AvdeevBot.sendMessage(chatId, data);
+    case 'message':
+      return AvdeevBot.sendMessage(chatId, data, options);
 
     case 'photo':
       return AvdeevBot.sendPhoto(chatId, data, options);

@@ -1,4 +1,4 @@
-import sendRequest from '../../helpers/send_request';
+import { sendRequest } from '../../helpers/send_request';
 import processingMessage from '../../helpers/processing_message';
 import sendResponse from '../../helpers/send_response';
 
@@ -14,7 +14,7 @@ const controllerRandomCat = async (message, AvdeevBot) => {
     '?api_key=' + apiKey +
     '&tag=cats';
 
-  const response = await sendRequest(url);
+  const response = await sendRequest({ url });
   const responseData = response && response.success && response.data;
 
   if (!responseData) {

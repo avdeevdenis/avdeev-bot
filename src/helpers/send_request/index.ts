@@ -3,8 +3,26 @@
  */
 const axios = require('axios');
 
-const sendRequest = async (url) => {
-  const response = await axios.get(url)
+interface IRequestOptions {
+  url: string;
+  method?: 'GET' | 'POST';
+  headers?: {
+    [key: string]: string
+  }
+}
+
+const sendRequest = async (options: IRequestOptions) => {
+  const {
+    url,
+    method = 'GET',
+    headers
+  } = options;
+
+  const response = await axios({
+    method,
+    url,
+    headers,
+  })
     .then(response => ({
       success: true,
       data: response
@@ -17,4 +35,4 @@ const sendRequest = async (url) => {
   return response;
 };
 
-export default sendRequest;
+export { sendRequest };

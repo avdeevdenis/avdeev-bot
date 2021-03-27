@@ -5,6 +5,7 @@ export interface ISendResponseOptions {
   AvdeevBot: any;
   data: string;
   options?: {
-    caption: string
+    caption?: string;
+    parse_mode?: 'MarkdownV2'
   };
 }

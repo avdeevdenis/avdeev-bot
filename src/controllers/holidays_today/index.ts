@@ -1,6 +1,6 @@
 import { parse } from 'node-html-parser';
 
-import sendRequest from '../../helpers/send_request';
+import { sendRequest } from '../../helpers/send_request';
 import processingMessage from '../../helpers/processing_message';
 import sendResponse from '../../helpers/send_response';
 import { errorLogger } from '../../helpers/loggers';
@@ -14,7 +14,7 @@ const HOLIDAY_TODAY_URL = 'https://calend.online/holiday/';
 const controllerHolidaysToday = async (message, AvdeevBot) => {
   const { chatId, username } = processingMessage(message);
 
-  const response = await sendRequest(HOLIDAY_TODAY_URL);
+  const response = await sendRequest({ url: HOLIDAY_TODAY_URL });
   const responseData = response && response.success && response.data;
 
   if (!responseData) {

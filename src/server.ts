@@ -13,6 +13,7 @@ import {
 
   controllerRandomCat,
   controllerRandomJoke,
+  controllerRandomMovie,
 
   controllerDefault,
 
@@ -50,6 +51,9 @@ const onGetMessage = async function (message) {
     case '/get_random_joke':
       return controllerRandomJoke(message, AvdeevBot);
 
+    case '/get_random_movie':
+      return controllerRandomMovie(message, AvdeevBot);
+
     case '/moex_day':
       return controllerScreenMoexDay(message, AvdeevBot);
 
@@ -71,7 +75,7 @@ const onGetMessage = async function (message) {
 /**
  * Оборачиваем обработку результатов в try catch для обработки гарантированного ответа
  */
-const tryCatcher = async function(onMessage, message) {
+const tryCatcher = async function (onMessage, message) {
   const { chatId, username } = processingMessage(message);
 
   try {

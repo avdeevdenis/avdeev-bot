@@ -11,6 +11,7 @@ const getAllCommands = () => ({
     '/update_stock_screens': 'To update screenshots of market indexes.',
     '/get_random_cat': 'To get a random cat gif.',
     '/get_random_joke': 'To get a random joke image.',
+    '/get_random_movie': 'To get a random movie.',
     '/what_holidays_is_today': 'What holiday is today?'
 });
 

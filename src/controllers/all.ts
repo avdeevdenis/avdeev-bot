@@ -9,6 +9,7 @@ import controllerHolidaysToday from './holidays_today';
 
 import controllerRandomCat from './random_cat';
 import controllerRandomJoke from './random_joke';
+import controllerRandomMovie from './random_movie';
 
 import controllerScreenMoexDay from './screen_moex_day';
 
@@ -25,6 +26,7 @@ export {
 
   controllerRandomCat,
   controllerRandomJoke,
+  controllerRandomMovie,
 
   controllerScreenMoexDay,
 
