@@ -35,7 +35,8 @@ const markerBold = string => '*' + string + '*';
  */
 const escapeString = string => {
   const escapedSymbols = [
-    '.', '-', '=', '#', '(', ')'
+    '.', '-', '=', '#', '(', ')', '!', '{', '}',
+    '>', '<', '|', '+'
   ];
 
   const escapedSequence = escapedSymbols.map(symbol => `[${symbol}]`).join('|');
@@ -45,6 +46,18 @@ const escapeString = string => {
   const replacer = found => '\\' + found;
 
   return string.replace(regexp, replacer);
+};
+
+/**
+ * Некоторые символы из описания телеграм не переваривает, удаляем их
+ */
+const deleteDangerSymbols = string => {
+  // Unhandled rejection Error: ETELEGRAM: 400 Bad Request: can't parse entities: Can't find end of Bold entity at byte offset
+  // string = string.replace(/[*]/g, '')
+  string = string.replace(/[_]/g, '');
+  string = string.replace(/[~]/g, '');
+
+  return string;
 };
 
 const getTitle = (movieData, year) => {
@@ -246,7 +259,7 @@ const getReponseCaption = rawMovieData => {
   /**
    * Эскеймип итоговое описание фильма
    */
-  result = escapeString(result);
+  result = escapeString(deleteDangerSymbols(result));
 
   /**
    * Добавляем ссылку на поиск фильма
