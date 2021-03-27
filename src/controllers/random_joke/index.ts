@@ -4,13 +4,15 @@ import { sendRequest } from '../../helpers/send_request';
 import processingMessage from '../../helpers/processing_message';
 import sendResponse from '../../helpers/send_response';
 import { errorLogger } from '../../helpers/loggers';
+import { IMessage } from '../../typings/IMessage';
+import { IAvdeevBot } from '../../typings/IAvdeevBot';
 
 const JOKE_SITE_URL = 'https://www.anekdot.ru/random/mem/';
 
 /**
  * Отправляет случайную гифку котика
  */
-const controllerRandomJoke = async (message, AvdeevBot) => {
+const controllerRandomJoke = async (message: IMessage, AvdeevBot: IAvdeevBot) => {
   const { chatId, username } = processingMessage(message);
 
   const response = await sendRequest({ url: JOKE_SITE_URL });

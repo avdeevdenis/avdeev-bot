@@ -1,3 +1,4 @@
+import { IMessage } from '../../typings/IMessage';
 import processingMessage from '../processing_message';
 import { IUserRequestsInfo } from './typings';
 
@@ -22,7 +23,7 @@ const userRequestsInfo: IUserRequestsInfo = {};
  * - перестаем обрабатывать последующие сообщения пользователя
  * - через 'UNBLOCK_USER_TIME' блокировка снимается
  */
-const DDoSProtectLogger = message => {
+const DDoSProtectLogger = (message: IMessage) => {
   const { fromId: userId, date } = processingMessage(message);
 
   const isBlockedByDDoS = (
@@ -64,7 +65,7 @@ const DDoSProtectLogger = message => {
 /**
  * Разблокировка пользователя через время = `UNBLOCK_USER_TIME`
  */
-async function timeoutedUnblock(userId) {
+async function timeoutedUnblock(userId: number) {
   if (userRequestsInfo[userId].jsTimer) {
     clearTimeout(userRequestsInfo[userId].jsTimer);
   }

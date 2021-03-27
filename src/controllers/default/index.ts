@@ -3,6 +3,8 @@
  */
 import processingMessage from '../../helpers/processing_message';
 import sendResponse from '../../helpers/send_response';
+import { IAvdeevBot } from '../../typings/IAvdeevBot';
+import { IMessage } from '../../typings/IMessage';
 
 const getAllCommands = () => ({
     '/spx_day': 'S&P 500 Index day overview.',
@@ -30,7 +32,7 @@ const getHelpStaticMessage = () => {
     return helpMessage;
 };
 
-const controllerDefault = async (message, AvdeevBot) => {
+const controllerDefault = async (message: IMessage, AvdeevBot: IAvdeevBot) => {
     const { chatId, username } = processingMessage(message);
 
     const helpStaticMessage = getHelpStaticMessage();

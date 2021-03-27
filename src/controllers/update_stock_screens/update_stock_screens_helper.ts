@@ -11,6 +11,8 @@ import {
 } from '../../helpers/screen_helpers';
 import sendResponse from '../../helpers/send_response';
 import processingMessage from '../../helpers/processing_message';
+import { IMessage } from '../../typings/IMessage';
+import { IAvdeevBot } from '../../typings/IAvdeevBot';
 
 /**
  * Состояние обновления скриншотов
@@ -26,7 +28,7 @@ const updateState = {
  * @returns {options.isUpdatedSuccessfully} - информация обновлена успешно
  * @returns {options.isLoading} - информация обновляется на данный момент
  */
-const updateStockScreens = async function (message, AvdeevBot) {
+const updateStockScreens = async function (message: IMessage, AvdeevBot: IAvdeevBot) {
   if (updateState.isLoading) {
     return updateState;
   }
@@ -72,7 +74,7 @@ const sitesConfig = [
 /**
  * Открывает сайт и делает скриншот выбранного элемента
  */
-async function openSiteAndTakeScreen(siteUrl, options, browser) {
+async function openSiteAndTakeScreen(siteUrl: string, options, browser) {
   const { capturedSelector, screenPath, waitForHiddenSelector } = options;
 
   try {

@@ -5,13 +5,15 @@ import processingMessage from '../../helpers/processing_message';
 import sendResponse from '../../helpers/send_response';
 import { errorLogger } from '../../helpers/loggers';
 import { IDateOptions } from './typings';
+import { IMessage } from '../../typings/IMessage';
+import { IAvdeevBot } from '../../typings/IAvdeevBot';
 
 const HOLIDAY_TODAY_URL = 'https://calend.online/holiday/';
 
 /**
  * Отправляет праздники сегодня
  */
-const controllerHolidaysToday = async (message, AvdeevBot) => {
+const controllerHolidaysToday = async (message: IMessage, AvdeevBot: IAvdeevBot) => {
   const { chatId, username } = processingMessage(message);
 
   const response = await sendRequest({ url: HOLIDAY_TODAY_URL });

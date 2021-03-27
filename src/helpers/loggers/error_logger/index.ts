@@ -1,11 +1,10 @@
 /**
  * Компонент логирует ошибки во время выполнения автоматизированных скриптов и пишет в папку 'src/logs'
- *
- * @param {Error} error - возникшая ошибка
- * @param {Object} message - входящее сообщение
  */
 
 import consoleLog from '../../console_log';
+
+import { IMessage } from '../../../typings/IMessage';
 
 const fs = require('fs');
 const path = require('path');
@@ -16,7 +15,7 @@ const root = path.dirname(require.main.filename);
  */
 const logsFilePath = root + '/logs/errors_logs';
 
-const errorLogger = async (error, message?: any) => {
+const errorLogger = async (error: Error, message?: IMessage) => {
   const errorData = {
     ts: Number(new Date()),
     error: {

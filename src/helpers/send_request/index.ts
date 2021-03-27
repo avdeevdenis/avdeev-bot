@@ -1,17 +1,11 @@
+import { IAjaxRequestOptions } from './typings';
+
 /**
  * Отправляет запрос на указанный url и возвращает результат
  */
 const axios = require('axios');
 
-interface IRequestOptions {
-  url: string;
-  method?: 'GET' | 'POST';
-  headers?: {
-    [key: string]: string
-  }
-}
-
-const sendRequest = async (options: IRequestOptions) => {
+const sendRequest = async (options: IAjaxRequestOptions) => {
   const {
     url,
     method = 'GET',

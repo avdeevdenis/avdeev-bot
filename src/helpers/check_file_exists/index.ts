@@ -1,9 +1,9 @@
-const fs = require('fs');
-
 /**
  * Проверяет наличие файла по указанному пути
  */
-const checkFileExists = async function (path) {
+const fs = require('fs');
+
+const checkFileExists = async (path: string) => {
   return fs.promises.access(path, fs.constants.F_OK)
     .then(() => true)
     .catch(() => false)

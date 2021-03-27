@@ -1,11 +1,13 @@
 import processingMessage from '../../helpers/processing_message';
 import updateStockScreens from './update_stock_screens_helper';
 import sendResponse from '../../helpers/send_response';
+import { IMessage } from '../../typings/IMessage';
+import { IAvdeevBot } from '../../typings/IAvdeevBot';
 
 /**
  * Обновляет скрины сайтов, где расположены необходимые котировки акции
  */
-const controllerUpdateStockScreens = async (message, AvdeevBot) => {
+const controllerUpdateStockScreens = async (message: IMessage, AvdeevBot: IAvdeevBot) => {
   const { chatId, username } = processingMessage(message);
 
   const { isUpdatedSuccessfully, isLoading } = await updateStockScreens(message, AvdeevBot);

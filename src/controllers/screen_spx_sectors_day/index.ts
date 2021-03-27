@@ -5,11 +5,13 @@ import checkFileExists from '../../helpers/check_file_exists';
 import getFileCreatedDateCaption from '../../helpers/get_file_created_date_caption';
 import sendResponse from '../../helpers/send_response';
 import { SPX_SECTORS_DAY_SCREEN_PATH } from '../../helpers/screen_helpers';
+import { IMessage } from '../../typings/IMessage';
+import { IAvdeevBot } from '../../typings/IAvdeevBot';
 
 /**
  * Отправляет котировки акции основных компаний из индекса SPX с разбивкой по секторам
  */
-const controllerScreenSpxSectorsDay = async (message, AvdeevBot) => {
+const controllerScreenSpxSectorsDay = async (message: IMessage, AvdeevBot: IAvdeevBot) => {
   const { chatId, username } = processingMessage(message);
 
   const isExists = await checkFileExists(SPX_SECTORS_DAY_SCREEN_PATH);

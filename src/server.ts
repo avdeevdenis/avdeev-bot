@@ -25,11 +25,13 @@ import {
   controllerUpdateStockScreens,
   controllerHolidaysToday,
 } from './controllers/all';
+import { IMessage } from './typings/IMessage';
+import { IAvdeevBot } from './typings/IAvdeevBot';
 
 /**
  * Обрабатываем поступающие сообщения от пользователей
  */
-const onGetMessage = async function (message) {
+const onGetMessage = async function (message: IMessage) {
   const { lowerText, fromId } = processingMessage(message);
 
   const isBlockedByDDoS = (
@@ -75,7 +77,7 @@ const onGetMessage = async function (message) {
 /**
  * Оборачиваем обработку результатов в try catch для обработки гарантированного ответа
  */
-const tryCatcher = async function (onMessage, message) {
+const tryCatcher = async function (onMessage: (message: IMessage) => void, message: IMessage) {
   const { chatId, username } = processingMessage(message);
 
   try {
@@ -95,8 +97,8 @@ const tryCatcher = async function (onMessage, message) {
 /**
  * Начинаем слушать события от бота (в основном пришедшие сообщения)
  */
-const subscribe = () => {
-  AvdeevBot.on('message', message => {
+const subscribe = (AvdeevBot: IAvdeevBot) => {
+  AvdeevBot.on('message', (message: IMessage) => {
     requestLogger(message);
     DDoSProtectLogger(message);
 
@@ -107,4 +109,4 @@ const subscribe = () => {
   AvdeevBot.on('webhook_error', errorLogger);
 };
 
-subscribe();
+subscribe(AvdeevBot);

@@ -7,13 +7,15 @@ import {
   getPosterSrc,
   getReponseCaption,
 } from './helpers';
+import { IMessage } from '../../typings/IMessage';
+import { IAvdeevBot } from '../../typings/IAvdeevBot';
 
 const RANDOM_MOVIE_URL = 'https://generator-online.com/api/movies?lang=ru';
 
 /**
  * Отправляет рекомендацию случайного фильма
  */
-const controllerRandomMovie = async (message, AvdeevBot) => {
+const controllerRandomMovie = async (message: IMessage, AvdeevBot: IAvdeevBot) => {
   const { chatId, username } = processingMessage(message);
 
   const response = await sendRequest({

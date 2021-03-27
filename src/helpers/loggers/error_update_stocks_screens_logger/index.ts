@@ -1,8 +1,5 @@
 /**
  * Компонент логирует ошибки во время выполнения обновления скриншотов по индексам (controller 'update_stock_screens') и пишет в папку 'src/logs'
- *
- * @param {Error} error - возникшая ошибка
- * @param {Object} message - входящее сообщение
  */
 
 const fs = require('fs');
@@ -17,7 +14,7 @@ import consoleLog from '../../console_log';
  */
 const logsFilePath = root + '/logs/errors_update_stocks_screens';
 
-const errorUpdateStockScreenLogger = async (error, params = {}) => {
+const errorUpdateStockScreenLogger = async (error: Error, params: Object) => {
   const errorData = {
     ts: Number(new Date()),
     error: {

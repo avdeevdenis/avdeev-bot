@@ -38,7 +38,7 @@ const escapeString = string => {
     '.', '-', '=', '#', '(', ')'
   ];
 
-  const escapedSequence = '[' + escapedSymbols.join('|') + ']';
+  const escapedSequence = escapedSymbols.map(symbol => `[${symbol}]`).join('|');
 
   const regexp = new RegExp(escapedSequence, 'g');
 

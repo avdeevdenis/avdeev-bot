@@ -5,7 +5,7 @@ import { ILocaleStringOptions } from './typings';
 /**
  * Возвращает дату создания файла по указанному пути
  */
-async function getFileCreationDate(screenPath) {
+async function getFileCreationDate(screenPath: string) {
   const fileStat = await fs.statSync(screenPath);
 
   const options: ILocaleStringOptions = {
@@ -27,7 +27,7 @@ async function getFileCreationDate(screenPath) {
 /**
  * Возвращает строку вида 'Изображение сделано 11 марта, 00:24:30'
  */
-async function getFileCreatedDateCaption(screenPath) {
+async function getFileCreatedDateCaption(screenPath: string) {
   const createdDate = await getFileCreationDate(screenPath);
 
   return 'Image was created - ' + createdDate;

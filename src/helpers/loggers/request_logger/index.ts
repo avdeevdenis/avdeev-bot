@@ -1,11 +1,10 @@
 /**
  * Компонент логирует информацию входящего сообщения и пишет в папку 'src/logs'
- *
- * @param {Object} message - входящее сообщение
  */
 import errorLogger from '../error_logger';
 import processingMessage from '../../processing_message';
 import consoleLog from '../../console_log';
+import { IMessage } from '../../../typings/IMessage';
 
 const fs = require('fs');
 const path = require('path');
@@ -17,7 +16,7 @@ const root = path.dirname(require.main.filename);
  */
 const logsFilePath = root + '/logs/message_logs';
 
-const requestLogger = async message => {
+const requestLogger = async (message: IMessage) => {
   const { username, text } = processingMessage(message);
   const wrappedMessage = {
     ts: Number(new Date()),

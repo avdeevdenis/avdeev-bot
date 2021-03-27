@@ -1,7 +1,9 @@
+import { IMessage } from '../../typings/IMessage';
+
 /**
  * Маппинг входящего сообщения боту на JS-сущности
  */
-const processingMessage = message => {
+const processingMessage = (message: IMessage) => {
   const text = message.text || '';
 
   const lowerText = text.toLocaleLowerCase();
