@@ -44,16 +44,16 @@ const onGetMessage = async function (message: IMessage) {
   }
 
   switch (lowerText) {
-    case '/what_holidays_is_today':
+    case '/what_holidays_are_today':
       return controllerHolidaysToday(message, AvdeevBot);
 
-    case '/get_random_cat':
+    case '/random_cat':
       return controllerRandomCat(message, AvdeevBot);
 
-    case '/get_random_joke':
+    case '/random_joke':
       return controllerRandomJoke(message, AvdeevBot);
 
-    case '/get_random_movie':
+    case '/random_movie':
       return controllerRandomMovie(message, AvdeevBot);
 
     case '/moex_day':

@@ -1,3 +1,5 @@
+import { escapeString } from '../../helpers/escape_response_message';
+
 /**
  * Возможные поля информации о фильме, будут оставлены только при совпадении 'key'
  */
@@ -29,24 +31,6 @@ const filterMovieData = movieData => {
  * Помечает текст жирным
  */
 const markerBold = string => '*' + string + '*';
-
-/**
- * Экспейпим содержимое, которое не пропускает API
- */
-const escapeString = string => {
-  const escapedSymbols = [
-    '.', '-', '=', '#', '(', ')', '!', '{', '}',
-    '>', '<', '|', '+'
-  ];
-
-  const escapedSequence = escapedSymbols.map(symbol => `[${symbol}]`).join('|');
-
-  const regexp = new RegExp(escapedSequence, 'g');
-
-  const replacer = found => '\\' + found;
-
-  return string.replace(regexp, replacer);
-};
 
 /**
  * Некоторые символы из описания телеграм не переваривает, удаляем их
